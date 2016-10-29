@@ -6,15 +6,26 @@ package Robot;
 
 public class Robot {
 
-	private int nombrePDV = 100;
-	private int energie = 100;
+	/*
+	 *Position en X et en Y sur la grille du robot 
+	 */
+	private int x;
+	private int y;
 	
-	public IA ia;
+	private int nombrePDV = 10;
+	private int energie = 10;
 	
-
-	public Robot(IA ia){
-		this.ia = ia;
+	public Robot(int x, int y){
+		this.x = x;
+		this.y = y;
 	}
 	
-	
+	public void getAction(){
+		try {
+			Class.forName("Plugins.Plugin_Deplacement");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Plugin non trouvé");
+			e.printStackTrace();
+		}
+	}
 }
