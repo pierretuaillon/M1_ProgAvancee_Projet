@@ -1,5 +1,7 @@
 package GUI;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 
 /**
@@ -12,18 +14,19 @@ public class Plateau extends JFrame {
 
 	private Arene arene;
 	
-	public Plateau(){
+	public Plateau(Arene arene){
+		this.setSize(300, 300);
+		this.setLayout(new BorderLayout());
 		
+		//ajout de l'arene au centre de la fenetre
+		this.arene = arene;
+		this.add(arene, BorderLayout.CENTER);
+		
+		this.setVisible(true);
 	}
 
 	public Arene getArene() {
 		return arene;
 	}
-
-	public void setArene(Arene arene) {
-		this.arene = arene;
-	}
-	
-	
 
 }

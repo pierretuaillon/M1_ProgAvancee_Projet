@@ -2,6 +2,8 @@ package Moteur;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import GUI.Arene;
 import GUI.Plateau;
 import Robot.Robot;
@@ -21,8 +23,8 @@ public class MoteurDeJeu {
 		for(int i=0; i<nbRobot; i++){
 			this.ListeRobot.add(new Robot(0, 0));
 		}
-		this.PlateauDeJeu = new Plateau();
-		PlateauDeJeu.setArene(new Arene(longueur, largeur));
+		this.PlateauDeJeu = new Plateau(new Arene(longueur, largeur));
+		this.PlateauDeJeu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	
@@ -30,7 +32,7 @@ public class MoteurDeJeu {
 	 * Methode pour lancer le jeu
 	 */
 	public void start(){
-		
+
 	}
 	
 	/**
