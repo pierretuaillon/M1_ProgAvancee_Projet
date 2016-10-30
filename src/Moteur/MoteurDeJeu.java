@@ -3,12 +3,13 @@ package Moteur;
 import java.util.ArrayList;
 
 import GUI.Arene;
+import GUI.Plateau;
 import Robot.Robot;
 
 public class MoteurDeJeu {
 
 	private ArrayList<Robot> ListeRobot = new  ArrayList<>();
-	private Arene PlateauDeJeu;
+	private Plateau PlateauDeJeu;
 	/**
 	 * Constructeur du Moteur de jeu prenant en paramétre le nombre de robot dans le jeu, la longueur du terrain et la largeur 
 	 * @param nbRobot
@@ -20,7 +21,8 @@ public class MoteurDeJeu {
 		for(int i=0; i<nbRobot; i++){
 			this.ListeRobot.add(new Robot(0, 0));
 		}
-		this.PlateauDeJeu = new Arene(longueur, largeur);
+		this.PlateauDeJeu = new Plateau();
+		PlateauDeJeu.setArene(new Arene(longueur, largeur));
 	}
 	
 	
