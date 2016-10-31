@@ -12,6 +12,7 @@ import javax.swing.JPanel;
  * @author Fred
  *	Classe qui represente la zone graphique ou les robots s'affrontent. 
  */
+
 public class Arene extends JPanel{
 
 	
