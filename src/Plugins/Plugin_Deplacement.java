@@ -1,5 +1,5 @@
 package Plugins;
 
-public class Plugin_Deplacement {
+public interface Plugin_Deplacement {
 
 }
