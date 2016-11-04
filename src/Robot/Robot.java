@@ -46,4 +46,24 @@ public class Robot {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	
+	public int getX() {
+		return x;
+	}
+
+
+	public int getY() {
+		return y;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Robot [color=" + color + ", nombrePDV=" + nombrePDV + ", energie=" + energie + "]";
+	}
+
+	
 }

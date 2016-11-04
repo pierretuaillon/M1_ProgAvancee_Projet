@@ -18,6 +18,8 @@ import Robot.Robot;
 
 public class Arene extends JPanel{
 
+	private int longueur;
+	private int largeur;
 	
 	public Arene(int longueur , int largeur){
 		GridLayout layout = new GridLayout(largeur, longueur);
@@ -36,15 +38,27 @@ public class Arene extends JPanel{
 	public Arene(int longueur , int largeur, ArrayList<Robot> ListeRobot){
 		GridLayout layout = new GridLayout(largeur, longueur);
 		this.setLayout(layout);
-		this.setBackground(Color.WHITE);
+		//this.setBackground(Color.WHITE);
 		this.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
 		
 		for (int i =0; i<(largeur*longueur); i++){
 		    JLabel label = new JLabel("");
-		    
+		    if (i==10){
+		    	label.setBackground(Color.RED);
+		    }else{
+		    	label.setBackground(Color.WHITE);
+		    }
 		    label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		    this.add(label);
 		}
+	}
+
+	public int getLongueur() {
+		return longueur;
+	}
+
+	public int getLargeur() {
+		return largeur;
 	}
 	
 	
