@@ -12,13 +12,7 @@ public class MoteurDeJeu {
 
 	private ArrayList<Robot> ListeRobot = new  ArrayList<>();
 	private Plateau PlateauDeJeu;
-	/**
-	 * Constructeur du Moteur de jeu prenant en paramétre le nombre de robot dans le jeu, la longueur du terrain et la largeur 
-	 * @param nbRobot
-	 * @param longeur
-	 * @param largeur
-	 */
-	
+
 	
 	public static int nombreAleaLongueur(int max){
 		return (int) (Math.random()*(max));
@@ -65,11 +59,12 @@ public class MoteurDeJeu {
 	
 	
 	/**
-	 * Méthode de mise en place du jeu
+	 * Constructeur du Moteur de jeu prenant en paramétre le nombre de robot dans le jeu, la longueur du terrain et la largeur 
 	 * @param nbRobot
-	 * @param longueur
+	 * @param longeur
 	 * @param largeur
 	 */
+	
 	public MoteurDeJeu(int nbRobot, int longueur, int largeur){
 		//Creation du nombre de robots
 		for(int i=0; i<nbRobot; i++){
