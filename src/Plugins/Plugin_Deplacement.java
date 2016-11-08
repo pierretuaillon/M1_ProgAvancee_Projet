@@ -6,6 +6,6 @@ import Robot.Robot;
 
 public interface Plugin_Deplacement {
 
-	public void deplacerRobot(ArrayList<Robot> ListeRobot);
+	public void deplacerRobot(ArrayList<Robot> listeRobot);
 	
 }

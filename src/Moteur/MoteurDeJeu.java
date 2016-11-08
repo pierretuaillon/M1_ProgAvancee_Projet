@@ -10,8 +10,8 @@ import Robot.Robot;
 
 public class MoteurDeJeu {
 
-	private ArrayList<Robot> ListeRobot = new  ArrayList<>();
-	private Plateau PlateauDeJeu;
+	private ArrayList<Robot> listeRobot = new ArrayList<>();
+	private Plateau plateauDeJeu;
 
 
 	public static int nombreAleaLongueur(int max){
@@ -29,12 +29,12 @@ public class MoteurDeJeu {
 	 * @return boolean
 	 */
 	public boolean robotExist(Robot robot){
-		if (this.ListeRobot.isEmpty()){
+		if (this.listeRobot.isEmpty()){
 			return false;
 		}else{
 			boolean exist = false;
-			for (int i = 0; i < this.ListeRobot.size(); i++) {
-				if((this.ListeRobot.get(i).getX() == robot.getX()) && (this.ListeRobot.get(i).getY() == robot.getY())){
+			for (int i = 0; i < this.listeRobot.size(); i++) {
+				if((this.listeRobot.get(i).getX() == robot.getX()) && (this.listeRobot.get(i).getY() == robot.getY())){
 					exist = true;
 				}
 			}
@@ -47,11 +47,11 @@ public class MoteurDeJeu {
 	 * @return Robot
 	 */
 	public Robot creationRobot(){
-		Robot robot = new Robot(MoteurDeJeu.nombreAleaLongueur(this.PlateauDeJeu.getArene().getLongueur()),
-				MoteurDeJeu.nombreAleaLargeur(this.PlateauDeJeu.getArene().getLargeur()));
+		Robot robot = new Robot(MoteurDeJeu.nombreAleaLongueur(this.plateauDeJeu.getArene().getLongueur()),
+				MoteurDeJeu.nombreAleaLargeur(this.plateauDeJeu.getArene().getLargeur()));
 		while(robotExist(robot)){
-			robot = new Robot(MoteurDeJeu.nombreAleaLongueur(this.PlateauDeJeu.getArene().getLongueur()),
-					MoteurDeJeu.nombreAleaLargeur(this.PlateauDeJeu.getArene().getLargeur()));
+			robot = new Robot(MoteurDeJeu.nombreAleaLongueur(this.plateauDeJeu.getArene().getLongueur()),
+					MoteurDeJeu.nombreAleaLargeur(this.plateauDeJeu.getArene().getLargeur()));
 		}
 		return robot;
 	}
@@ -63,10 +63,10 @@ public class MoteurDeJeu {
 	 */
 	public Robot robotLePlusProche(Robot robotReference) {
 		Robot robotProche = null;
-		int distanceSauvegardee = Robot.distanceEntreRobots(robotReference, this.ListeRobot.get(0));
+		int distanceSauvegardee = Robot.distanceEntreRobots(robotReference, this.listeRobot.get(0));
 
-		for (int i = 1; i < this.ListeRobot.size(); i++) {
-			Robot robotCourant = this.ListeRobot.get(i);
+		for (int i = 1; i < this.listeRobot.size(); i++) {
+			Robot robotCourant = this.listeRobot.get(i);
 			int distanceCourante = Robot.distanceEntreRobots(robotReference, robotCourant);
 			if (distanceCourante < distanceSauvegardee) {
 				distanceSauvegardee = distanceCourante;
@@ -88,13 +88,13 @@ public class MoteurDeJeu {
 
 	public MoteurDeJeu(int nbRobot, int longueur, int largeur){
 
-		this.PlateauDeJeu = new Plateau(new Arene(longueur, largeur));
+		this.plateauDeJeu = new Plateau(new Arene(longueur, largeur));
 		//Creation du nombre de robots
 		for(int i=0; i<nbRobot; i++){
 			Robot robot = creationRobot();
-			this.ListeRobot.add(robot);
+			this.listeRobot.add(robot);
 		}
-		this.PlateauDeJeu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.plateauDeJeu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		start();
 	}
 
@@ -105,14 +105,14 @@ public class MoteurDeJeu {
 	public void start(){
 
 		//Tant qu'il reste plus d'un robot en jeu
-		while(this.ListeRobot.size()>1){
+		while(this.listeRobot.size()>1){
 			//On parcours la liste des robots et on leurs demande leurs actions 
-			for (int i = 0; i < this.ListeRobot.size(); i++) {
-				this.ListeRobot.get(i).getAction();
+			for (int i = 0; i < this.listeRobot.size(); i++) {
+				this.listeRobot.get(i).getAction();
 			}
 		}
 
-		System.out.println("Le gagnant est : " + this.ListeRobot.get(0));
+		System.out.println("Le gagnant est : " + this.listeRobot.get(0));
 
 	}
 
