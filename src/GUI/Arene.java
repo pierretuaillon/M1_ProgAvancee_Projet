@@ -22,6 +22,9 @@ public class Arene extends JPanel{
 	private int largeur;
 	
 	public Arene(int longueur , int largeur){
+		this.longueur = longueur;
+		this.largeur = largeur;
+		
 		GridLayout layout = new GridLayout(largeur, longueur);
 		this.setLayout(layout);
 		this.setBackground(Color.WHITE);
@@ -36,6 +39,9 @@ public class Arene extends JPanel{
 	}
 	
 	public Arene(int longueur , int largeur, ArrayList<Robot> listeRobot){
+		this.longueur = longueur;
+		this.largeur = largeur;
+		
 		GridLayout layout = new GridLayout(largeur, longueur);
 		this.setLayout(layout);
 		//this.setBackground(Color.WHITE);

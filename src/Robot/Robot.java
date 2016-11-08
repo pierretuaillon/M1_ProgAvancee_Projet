@@ -48,18 +48,18 @@ public class Robot {
 	}
 	
 	/**
-	 * Calcul de la distance entre deux robots, arrondi a l'entier superieur
+	 * Calcul de la distance entre deux robots
 	 * @param robot1
 	 * @param robot2
-	 * @return int
+	 * @return double
 	 */
-	public static int distanceEntreRobots(Robot robot1, Robot robot2) {
+	public static double distanceEntreRobots(Robot robot1, Robot robot2) {
 		int x1 = robot1.getX();
 		int y1 = robot1.getY();
 		int x2 = robot2.getX();
 		int y2 = robot2.getY();
 
-		return (int) Math.floor(Math.sqrt(Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2)));
+		return (double) Math.sqrt(Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2));
 	}
 	
 	
@@ -90,6 +90,32 @@ public class Robot {
 
 	public void setEnergie(int energie) {
 		this.energie = energie;
+	}
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Robot other = (Robot) obj;
+		if (color == null) {
+			if (other.color != null)
+				return false;
+		} else if (!color.equals(other.color))
+			return false;
+		if (energie != other.energie)
+			return false;
+		if (nombrePDV != other.nombrePDV)
+			return false;
+		if (x != other.x)
+			return false;
+		if (y != other.y)
+			return false;
+		return true;
 	}
 
 
