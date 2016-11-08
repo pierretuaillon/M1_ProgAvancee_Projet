@@ -13,18 +13,18 @@ public class MoteurDeJeu {
 	private ArrayList<Robot> ListeRobot = new  ArrayList<>();
 	private Plateau PlateauDeJeu;
 
-	
+
 	public static int nombreAleaLongueur(int max){
 		return (int) (Math.random()*(max));
 	}
-	
+
 	public static int nombreAleaLargeur(int max){
 		return (int) (Math.random()*(max));
 	}
-	
-	
+
+
 	/**
-	 * Méthode pour verifier qu'un robot ne se trouve pas au même coordonnée qu'un autre
+	 * Methode pour verifier qu'un robot ne se trouve pas au meme coordonnee qu'un autre
 	 * @param robot
 	 * @return boolean
 	 */
@@ -41,9 +41,9 @@ public class MoteurDeJeu {
 			return exist;
 		}
 	}
-	
+
 	/**
-	 * Création du robot à des coordonnées aléatoire
+	 * Creation du robot a des coordonnees aleatoire
 	 * @return Robot
 	 */
 	public Robot creationRobot(){
@@ -55,33 +55,55 @@ public class MoteurDeJeu {
 		}
 		return robot;
 	}
-	
-	
-	
+
 	/**
-	 * Constructeur du Moteur de jeu prenant en paramétre le nombre de robot dans le jeu, la longueur du terrain et la largeur 
+	 * Retourne le robot le plus proche (premier trouve)
+	 * @param robotReference
+	 * @return Robot
+	 */
+	public Robot robotLePlusProche(Robot robotReference) {
+		Robot robotProche = null;
+		int distanceSauvegardee = Robot.distanceEntreRobots(robotReference, this.ListeRobot.get(0));
+
+		for (int i = 1; i < this.ListeRobot.size(); i++) {
+			Robot robotCourant = this.ListeRobot.get(i);
+			int distanceCourante = Robot.distanceEntreRobots(robotReference, robotCourant);
+			if (distanceCourante < distanceSauvegardee) {
+				distanceSauvegardee = distanceCourante;
+				robotProche = robotCourant;
+			}
+		}
+
+		return robotProche;
+
+	}
+
+
+	/**
+	 * Constructeur du Moteur de jeu prenant en paramï¿½tre le nombre de robot dans le jeu, la longueur du terrain et la largeur 
 	 * @param nbRobot
 	 * @param longeur
 	 * @param largeur
 	 */
-	
+
 	public MoteurDeJeu(int nbRobot, int longueur, int largeur){
+
+		this.PlateauDeJeu = new Plateau(new Arene(longueur, largeur));
 		//Creation du nombre de robots
 		for(int i=0; i<nbRobot; i++){
 			Robot robot = creationRobot();
 			this.ListeRobot.add(robot);
 		}
-		this.PlateauDeJeu = new Plateau(new Arene(longueur, largeur));
 		this.PlateauDeJeu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		start();
 	}
-	
-	
+
+
 	/**
 	 * Methode pour lancer le jeu
 	 */
 	public void start(){
-		
+
 		//Tant qu'il reste plus d'un robot en jeu
 		while(this.ListeRobot.size()>1){
 			//On parcours la liste des robots et on leurs demande leurs actions 
@@ -89,16 +111,16 @@ public class MoteurDeJeu {
 				this.ListeRobot.get(i).getAction();
 			}
 		}
-		
+
 		System.out.println("Le gagnant est : " + this.ListeRobot.get(0));
-		
+
 	}
-	
+
 	/**
-	 * Méthode main
+	 * Methode main
 	 * @param args
 	 */
-	
+
 	public static void main(String[] args) {
 		MoteurDeJeu mdj = new MoteurDeJeu(2, 10, 10);
 		mdj.start();

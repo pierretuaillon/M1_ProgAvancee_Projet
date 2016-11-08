@@ -3,7 +3,7 @@ package Robot;
 import java.awt.Color;
 
 /**
- * Class représentant un robot
+ * Class representant un robot
  */
 
 public class Robot {
@@ -42,12 +42,25 @@ public class Robot {
 		try {
 			Class.forName("Plugins.Plugin_Deplacement");
 		} catch (ClassNotFoundException e) {
-			System.out.println("Plugin non trouvé");
+			System.out.println("Plugin non trouve");
 			e.printStackTrace();
 		}
 	}
 	
-	
+	/**
+	 * Calcul de la distance entre deux robots, arrondi a l'entier superieur
+	 * @param robot1
+	 * @param robot2
+	 * @return int
+	 */
+	public static int distanceEntreRobots(Robot robot1, Robot robot2) {
+		int x1 = robot1.getX();
+		int y1 = robot1.getY();
+		int x2 = robot2.getX();
+		int y2 = robot2.getY();
+
+		return (int) Math.floor(Math.sqrt(Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2)));
+	}
 	
 	
 	public int getX() {
@@ -57,6 +70,26 @@ public class Robot {
 
 	public int getY() {
 		return y;
+	}
+
+
+	public int getNombrePDV() {
+		return nombrePDV;
+	}
+
+
+	public void setNombrePDV(int nombrePDV) {
+		this.nombrePDV = nombrePDV;
+	}
+
+
+	public int getEnergie() {
+		return energie;
+	}
+
+
+	public void setEnergie(int energie) {
+		this.energie = energie;
 	}
 
 
